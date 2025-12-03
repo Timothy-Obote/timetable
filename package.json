@@ -1,0 +1,17 @@
+{
+  "name": "timetable",
+  "version": "1.0.0",
+  "description": "School Timetable Generator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["timetable", "school", "scheduler"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "hbs": "^4.2.0"
+  }
+}
