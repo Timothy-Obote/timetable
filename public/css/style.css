@@ -5,6 +5,38 @@
     font-family: Arial, sans-serif;
 }
 
+:root{
+    /* Colors */
+    --white-color: #fff;
+    --dark-color: #252525;
+    --primary-color: #013220;
+    --secondary-color: #0000;
+    --light-pink-color: #faf4f5;
+    --medium-gray-color: #ccc;
+
+    /* Font size */
+    --font-size-s: 0.9rem;
+    --font-size-n: 1rem;
+    --font-size-m: 1.5rem;
+    --font-size-1: 2rem;
+    --font-size-xl: 3rem;
+    --font-size-xxl: 4rem;
+
+    /* font weight */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Border radius */
+    --border-radius-s: 8px;
+    --border-radius-m: 30px;
+    --border-radius-circle: 50%;
+
+    /* Site max width */
+    --site-max-width: 1300px;
+}
+
 body {
     background-color: #f5f5f5;
     color: #333;
@@ -18,14 +50,49 @@ body {
     padding: 0 15px;
 }
 
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.section-content {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: var(--site-max-width);
+}
+
+.section-title {
+    text-align: center;
+    padding: 60px 0 100px;
+    text-transform: uppercase;
+    font-size: var(--font-size-xl);
+}
+
+.section-title::after{
+    content: "";
+    width: 80px;
+    height: 5px;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: var(--border-radius-s);
+    background: var(--secondary-color);
+}
+
 /* Header */
 header {
-    background: white;
+    background: var(--primary-color);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: fixed;
     width: 100%;
     top: 0;
-    z-index: 100;
 }
 
 .header-content {
@@ -40,7 +107,7 @@ header {
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #013220;
+    color: black;
 }
 
 .logo i {
@@ -61,20 +128,23 @@ nav ul li {
     margin-left: 25px;
 }
 
-nav ul li a {
-    color: #333;
+.navbar .nav-menu .nav-link{
+    padding: 10px 18px;
+    color: black;
     text-decoration: none;
-    font-weight: 500;
+    font-size: var(--font-size-m);
+    border-radius: var(--border-radius-m);
+    transition: 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #438dee;
+.navbar .nav-menu .nav-link:hover {
+    color: var(--white-color);
+    background: black;
 }
 
 /* Hero Section */
 .hero {
     background-image: url(../images/teachers-hero.jpg);
-    /*background: linear-gradient(135deg, #4361ee, #3a0ca3);*/
     color: white;
     padding: 200px 0 150px;
     text-align: left;
@@ -91,6 +161,75 @@ nav ul li a:hover {
     max-width: 700px;
     /*margin-left: auto;
     margin-right: auto;*/
+}
+
+/* Hero section styling */
+.hero-section {
+    min-height: 100vh;
+    background: var(--primary-color);
+}
+
+.hero-section .section-content {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--white-color);
+    justify-content: space-between;
+}
+
+.hero-section .hero-details .title {
+    font-size: var(--font-size-xxl);
+    color: white;
+}
+
+.hero-section .hero-details .subtitle {
+    margin-top: 8px;
+    max-width: 70%;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);    
+}
+
+.hero-section .hero-details .description {
+    max-width: 70%;
+    margin: 24px 0 40px;
+    font-size: var(--font-size-m);
+}
+
+.hero-section .hero-details .buttons {
+    display: flex;
+    gap: 23px;
+}
+
+.hero-section .hero-details .button {
+    padding: 10px 26px;
+    border: 2px solid transparent;
+    color: black;
+    border-radius: var(--border-radius-m);
+    background: white;
+    font-weight: var(--font-weight-medium);
+    transition: 0.3s ease;
+}
+
+.hero-section .hero-details .button:hover,
+.hero-section .hero-details .contact-us {
+    color: var(--white-color);
+    border-color: var(--white-color);
+    background: transparent;
+}
+
+.hero-section .hero-details .contact-us:hover {
+    color: var(--primary-color);
+    border-color: var(--secondary-color);
+    background: var(--secondary-color);    
+}
+
+.hero-section .hero-image-wrapper img{
+    /* max-width: 500px;
+    margin-right: 30px; */
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius-circle);
 }
 
 .btn {
@@ -167,7 +306,7 @@ nav ul li a:hover {
 
 .feature-icon {
     font-size: 2.5rem;
-    color: #438dff;
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 

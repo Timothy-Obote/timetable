@@ -4,248 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Timetable</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            padding: 30px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            color: #667eea;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .controls {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-2px);
-        }
-
-        .btn-success {
-            background: #48bb78;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #38a169;
-        }
-
-        .btn-secondary {
-            background: #718096;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #4a5568;
-        }
-
-        .timetable-wrapper {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th, td {
-            border: 2px solid #e2e8f0;
-            padding: 15px;
-            text-align: center;
-        }
-
-        th {
-            background: #667eea;
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        td {
-            background: white;
-            min-width: 150px;
-            position: relative;
-        }
-
-        .time-slot {
-            background: #f7fafc;
-            font-weight: 600;
-            color: #4a5568;
-        }
-
-        .subject-cell {
-            cursor: pointer;
-            transition: all 0.2s;
-            min-height: 60px;
-        }
-
-        .subject-cell:hover {
-            background: #edf2f7;
-        }
-
-        .subject-cell.editing {
-            background: #fef5e7;
-        }
-
-        .subject-name {
-            font-weight: 600;
-            color: #2d3748;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .teacher-name {
-            font-size: 12px;
-            color: #718096;
-        }
-
-        .empty-slot {
-            color: #cbd5e0;
-            font-style: italic;
-        }
-
-        select {
-            width: 100%;
-            padding: 8px;
-            border: 2px solid #667eea;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .alert {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        .alert-success {
-            background: #c6f6d5;
-            color: #22543d;
-            border: 1px solid #48bb78;
-        }
-
-        .alert-error {
-            background: #fed7d7;
-            color: #742a2a;
-            border: 1px solid #f56565;
-        }
-
-        .alert-info {
-            background: #bee3f8;
-            color: #2c5282;
-            border: 1px solid #4299e1;
-        }
-
-        .no-timetable {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .no-timetable h2 {
-            color: #4a5568;
-            margin-bottom: 15px;
-        }
-
-        .no-timetable p {
-            color: #718096;
-            margin-bottom: 25px;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Subject color coding */
-        .Languages { background: #fef5e7; }
-        .Sciences { background: #e8f5e9; }
-        .Arts { background: #fce4ec; }
-        .Sports { background: #e3f2fd; }
-    </style>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/timetable-style.css">
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>EduSchedule</span>
+                </div>
+                <nav class="navbar">
+                    <ul class="nav-menu">
+                        <li class="nav-menu">
+                            <a href="/" class="nav-link">Home</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <header>
-            <h1>📚 School Weekly Timetable</h1>
+            <h1>School Weekly Timetable</h1>
             <p>Click on any cell to edit</p>
-        </header>
 
         <div class="controls">
             <button class="btn btn-primary" onclick="generateTimetable()">
-                ✨ Generate New Timetable
+                Generate New Timetable
             </button>
             <button class="btn btn-success" onclick="saveTimetable()">
-                💾 Save Changes
+                Save Changes
             </button>
             <button class="btn btn-secondary" onclick="window.location.href='/'">
-                🏠 Back to Home
+                Back to Home
             </button>
         </div>
 
@@ -459,10 +252,37 @@
             }
         }
 
-        // Initial render
         if (Object.keys(currentTimetable).length > 0) {
             renderTimetable();
         }
     </script>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EduSchedule</h3>
+                    <p>The smart solution for school timetable management.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@eduschedule.com</li>
+                        <li><i class="fas fa-phone"></i>+254123456789</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EduSchedule. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

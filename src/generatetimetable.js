@@ -1,6 +1,5 @@
-
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // Load data dynamically from JSON file
 function loadData() {
@@ -83,4 +82,4 @@ function generateTimetable() {
     return timetable;
 }
 
-module.exports = generateTimetable;
+export default generateTimetable;
